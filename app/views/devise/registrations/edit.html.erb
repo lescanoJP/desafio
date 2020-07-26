@@ -1,5 +1,27 @@
 <div class = "container">
-<h2 class="title is-3">Edit <%= resource_name.to_s.humanize %></h2>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+     
+       <%= link_to "Home", root_path , class: "navbar-item" %>
+
+       <%= link_to "My list", wishes_path , class: "navbar-item" %>       
+    </div>
+    </div>
+    
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'button is-info' %>
+          <%= link_to "Edit Account", edit_user_registration_path, class: 'button is-light' %>
+          
+        </div>
+      </div>
+    </div>
+</nav>
+
+<p><h1 class= "title is-3">FLOPFLIX</h1></p>
+<p><h2 class="subtitle is-4">Edit account: <% resource_name.to_s.humanize %></h2></p>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -43,15 +65,15 @@
   </div>
 
   <div class="actions">
-  <%= f.submit "Update" , :class => "button_is_black" %> 
+  <%= f.submit "Update" , class: "button is-info" %> 
    
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<br>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete , class: 'button_is_black'%></p>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete , class: 'button is-info'%></p>
 
-<%= link_to "Back", :back, :class =>"button_is_black" %>
+
 
 </div>

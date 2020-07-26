@@ -1,14 +1,49 @@
 <div class="container">
-<h1 class= "title is-3"> Minha Lista </h1>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+     
+       <%= link_to "Home", root_path , class: "navbar-item" %>
+
+       <%= link_to "My list", wishes_path , class: "navbar-item" %>    
+
+     </div>
+  </div>
+    
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'button is-info' %>
+          <%= link_to "Edit Account", edit_user_registration_path, class: 'button is-light' %>
+          
+        </div>
+      </div>
+    </div>
+</nav>
+
+<p><h1 class= "title is-3">FLOPFLIX</h1></p>
+<p><h1 class= "subtitle is-4"> My list </h1></p>
 <% @movies.each do |movie| %>
 <p>  <%= movie['title'] %> </p>
-<%= link_to "Remove from list", wish_path(id: movie['id']), method: :delete, class: "button is-black" %>
+<p>  <img src='http://cf2.imgobject.com/t/p/w200/<%=movie['poster_path']%>'></p>
+<%= link_to "Remove from list", wish_path(id: movie['id']), method: :delete, class: "button is-info" %>
 <% end %>
 <br>
 <br>
 <br>
-
-<%= link_to "Back", root_path %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>FLOPFLIX </strong> developed by @lescanojp 2020. 
+    </p>
+  </div>
+</footer>
 
 </div>
 

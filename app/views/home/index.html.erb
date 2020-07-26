@@ -1,17 +1,59 @@
 <div class = "container">
-  <h1 class= "title is-3">Home#index</h1>
-  <p>Find me in app/views/home/index.html.erb</p>
-  <%= link_to "Sair", destroy_user_session_path, method: :delete %>
-  <%= link_to "Editar", edit_user_registration_path %>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+     
+       <%= link_to "Home", root_path , class: "navbar-item" %>
+
+       <%= link_to "My list", wishes_path , class: "navbar-item" %>    
+
+       
+
+     </div>
+  </div>
+    
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'button is-info' %>
+          <%= link_to "Edit Account", edit_user_registration_path, class: 'button is-light' %>
+          
+        </div>
+      </div>
+    </div>
+</nav>
+
+
+  <h1 class= "title is-3">FLOPFLIX</h1>
+  <p>A good way to create movie lists to watch! ;D</p>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-
+  <br>
   <div class = "field">
     <%= form_tag(searches_path, method: :get) do %>
-      <%= label_tag(:q, "Search for:") %>
-      <%= text_field_tag(:q) %>
-      
-      <%= submit_tag("Search") %>
+      <%= label_tag(:q, "Search for a movie:" , class: "label") %>
+      <%= text_field_tag(:q,'', class: "input is-info") %>
+      <br>
+      </br>
+      <%= submit_tag("Search!", class: "button is-info") %>
      <% end %> 
   </div>   
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+  <footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>FLOPFLIX </strong> developed by @lescanojp 2020. 
+    </p>
+  </div>
+</footer>
+
 </div>

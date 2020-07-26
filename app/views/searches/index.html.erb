@@ -1,31 +1,65 @@
 <div class = "container">
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+     
+       <%= link_to "Home", root_path , class: "navbar-item" %>
 
-<h1 class = "title is-3"> Resultados para a pesquisa: <%= @query %><h1>
+       <%= link_to "My list", wishes_path , class: "navbar-item" %>    
 
-<%= @result.each do |movie| %>
+     </div>
+  </div>
+    
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'button is-info' %>
+          <%= link_to "Edit Account", edit_user_registration_path, class: 'button is-light' %>
+          
+        </div>
+      </div>
+    </div>
+</nav>
+<p><h1 class= "title is-3">FLOPFLIX</h1></p>
+<h1 class = "subtitle is-4"> Search results of: <%= @query %><h1>
+
+<% @result.each do |movie| %>
  <strong> <p><%= movie['title'] %></p> </strong>
+
  <% if current_user.wishes.exists?(movie_id: movie['id']) %>
-    <%= link_to "Remove from list", wish_path(id: movie['id']), method: :delete, class: "button is-black" %>
+    <%= link_to "Remove from list", wish_path(id: movie['id']), method: :delete, class: "button is-info" %>
  <% else %>
     <%= form_tag(wishes_path, :method => :post) do %>
       <%= hidden_field_tag(:movie_id, movie['id'] ) %>
-      <%= submit_tag("Add to list", class: "button is-black")  %>
+      <%= submit_tag("Add to list", class: "button is-info")  %>
     <% end %> 
  <% end %> 
-
-  <strong><p><%= movie['id'] %></p></strong>
-
+<p><img src='http://cf2.imgobject.com/t/p/w200/<%=movie['poster_path']%>'></p>
   <strong><p>Description: </p></strong>
   <p><%= movie['overview'] %></p>
 
-  <strong><p>Poster Image:</p></strong>
-  <p><%= movie['poster_path'] %><img src='/wR5HZWdVpcXx9sevV1bQi7rP4op.jpg'></p>
+    <p><% movie['poster_path'] %></p>
 
   <strong><p>Release date of the movie:</p></strong>
   <p><%= movie['release_date'] %></p> <br>
 <% end %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+ <footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>FLOPFLIX </strong> developed by @lescanojp 2020. 
+    </p>
+  </div>
+</footer>
 
-<%= link_to "Back", root_path %>
 </div>
 
 
