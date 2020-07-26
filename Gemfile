@@ -7,6 +7,8 @@ ruby '2.7.1'
 gem 'devise'
 # Gem da API Movie DB
 gem 'themoviedb'
+#Bulma gem
+gem "bulma-rails", "~> 0.9.0"
 
 gem 'enceladus'
 # Pesquisas dentro do Postgresql

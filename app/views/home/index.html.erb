@@ -1,11 +1,17 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-<%= link_to "Sair", destroy_user_session_path, method: :delete %>
-<%= link_to "Perfil", edit_user_registration_path %>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= form_tag(searches_path, :method => "get") do %>
-  <%= label_tag(:q, "Search for:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
-<% end %> 
+<div class = "container">
+  <h1 class= "title is-3">Home#index</h1>
+  <p>Find me in app/views/home/index.html.erb</p>
+  <%= link_to "Sair", destroy_user_session_path, method: :delete %>
+  <%= link_to "Editar", edit_user_registration_path %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+  <div class = "field">
+    <%= form_tag(searches_path, method: :get) do %>
+      <%= label_tag(:q, "Search for:") %>
+      <%= text_field_tag(:q) %>
+      
+      <%= submit_tag("Search") %>
+     <% end %> 
+  </div>   
+</div>

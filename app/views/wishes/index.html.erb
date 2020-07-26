@@ -1,0 +1,15 @@
+<div class="container">
+<h1 class= "title is-3"> Minha Lista </h1>
+<% @movies.each do |movie| %>
+<p>  <%= movie['title'] %> </p>
+<%= link_to "Remove from list", wish_path(id: movie['id']), method: :delete, class: "button is-black" %>
+<% end %>
+<br>
+<br>
+<br>
+
+<%= link_to "Back", root_path %>
+
+</div>
+
+

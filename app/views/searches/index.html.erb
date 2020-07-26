@@ -1,10 +1,31 @@
-<h1> Resultados para a pesquisa: <%= @query %><h1>
+<div class = "container">
+
+<h1 class = "title is-3"> Resultados para a pesquisa: <%= @query %><h1>
+
 <%= @result.each do |movie| %>
-  <p><%= movie['title'] %></p>
-  <p>Description: </p>
+ <strong> <p><%= movie['title'] %></p> </strong>
+ <% if current_user.wishes.exists?(movie_id: movie['id']) %>
+    <%= link_to "Remove from list", wish_path(id: movie['id']), method: :delete, class: "button is-black" %>
+ <% else %>
+    <%= form_tag(wishes_path, :method => :post) do %>
+      <%= hidden_field_tag(:movie_id, movie['id'] ) %>
+      <%= submit_tag("Add to list", class: "button is-black")  %>
+    <% end %> 
+ <% end %> 
+
+  <strong><p><%= movie['id'] %></p></strong>
+
+  <strong><p>Description: </p></strong>
   <p><%= movie['overview'] %></p>
-  <p>Poster Image:</p>
+
+  <strong><p>Poster Image:</p></strong>
   <p><%= movie['poster_path'] %><img src='/wR5HZWdVpcXx9sevV1bQi7rP4op.jpg'></p>
-  <p>Release date of the movie:</p>
-  <p><%= movie['release_date'] %></p>
+
+  <strong><p>Release date of the movie:</p></strong>
+  <p><%= movie['release_date'] %></p> <br>
 <% end %>
+
+<%= link_to "Back", root_path %>
+</div>
+
+

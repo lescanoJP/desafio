@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_25_214010) do
+ActiveRecord::Schema.define(version: 2020_07_26_042435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -71,6 +71,15 @@ ActiveRecord::Schema.define(version: 2020_07_25_214010) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wishes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "movie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_wishes_on_movie_id"
+    t.index ["user_id"], name: "index_wishes_on_user_id"
+  end
+
   create_table "wishlists", force: :cascade do |t|
     t.bigint "user_id"
     t.integer "movie_id"
@@ -83,5 +92,6 @@ ActiveRecord::Schema.define(version: 2020_07_25_214010) do
   add_foreign_key "favorites", "movies"
   add_foreign_key "favorites", "users"
   add_foreign_key "movies", "categories"
+  add_foreign_key "wishes", "users"
   add_foreign_key "wishlists", "users"
 end
