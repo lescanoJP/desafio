@@ -1,0 +1,10 @@
+<h1> Resultados para a pesquisa: <%= @query %><h1>
+<%= @result.each do |movie| %>
+  <p><%= movie['title'] %></p>
+  <p>Description: </p>
+  <p><%= movie['overview'] %></p>
+  <p>Poster Image:</p>
+  <p><%= movie['poster_path'] %><img src='/wR5HZWdVpcXx9sevV1bQi7rP4op.jpg'></p>
+  <p>Release date of the movie:</p>
+  <p><%= movie['release_date'] %></p>
+<% end %>

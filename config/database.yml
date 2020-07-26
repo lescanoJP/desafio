@@ -1,0 +1,8 @@
+default: &default
+ adapter: postgresql
+ encoding: unicode
+ username: postgres
+ password: a1s2d3f4
+development:
+ <<: *default
+ database: appteste_development
