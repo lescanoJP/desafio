@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root :to => "home#index" 
   resources :searches
   resources :wishes  
+  resources :watchedmovies
 end

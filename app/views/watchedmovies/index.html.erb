@@ -1,4 +1,4 @@
-<div class = "container">
+<div class= "container">
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
@@ -24,20 +24,13 @@
     </div>
 </nav>
 
-
-  <h1 class= "title is-3">FLOPFLIX</h1>
-  <p>A good way to create movie lists to watch! ;D</p>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <br>
-  <div class = "field">
-    <%= form_tag(searches_path, method: :get) do %>
-      <%= label_tag(:q, "Search for a movie:" , class: "label") %>
-      <%= text_field_tag(:q,'', class: "input is-info") %>
-      <br>
-      <%= submit_tag("Search!", class: "button is-info") %>
-     <% end %> 
-  </div>   
+<p><h1 class= "title is-3">FLOPFLIX</h1></p>
+<p><h1 class= "subtitle is-4"> Watched Movies </h1></p>
+<% @watchedmovies.each do |watchedmovie| %>
+<p>  <%= watchedmovie['title'] %> </p>
+<p>  <img src='http://cf2.imgobject.com/t/p/w200/<%=watchedmovie['poster_path']%>'></p>
+<%= link_to "Remove from Watched Movies", watchedmovie_path(id: watchedmovie['id']), method: :delete, class: "button is-info" %>
+<% end %>
 <br>
 <br>
 <br>
@@ -46,7 +39,7 @@
 <br>
 <br>
 <br>
-  <footer class="footer">
+<footer class="footer">
   <div class="content has-text-centered">
     <p>
       <strong>FLOPFLIX </strong> developed by @lescanojp 2020. 

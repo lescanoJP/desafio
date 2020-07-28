@@ -5,7 +5,9 @@
      
        <%= link_to "Home", root_path , class: "navbar-item" %>
 
-       <%= link_to "My list", wishes_path , class: "navbar-item" %>    
+       <%= link_to "My list", wishes_path , class: "navbar-item" %>   
+
+       <%= link_to "Watched Movies", watchedmovies_path, class: "navbar-item" %>
 
      </div>
   </div>
@@ -26,8 +28,20 @@
 <p><h1 class= "subtitle is-4"> My list </h1></p>
 <% @movies.each do |movie| %>
 <p>  <%= movie['title'] %> </p>
-<p>  <img src='http://cf2.imgobject.com/t/p/w200/<%=movie['poster_path']%>'></p>
-<%= link_to "Remove from list", wish_path(id: movie['id']), method: :delete, class: "button is-info" %>
+  <p>  <img src='http://cf2.imgobject.com/t/p/w200/<%=movie['poster_path']%>'></p>
+  <%= link_to "Remove from list", wish_path(id: movie['id']), method: :delete, class: "button is-info" %>
+  <br>
+  <br>
+  <% if current_user.watchedmovies.exists?(movie_id: movie['id']) %>
+    <%= link_to "Remove from Watched Movies", watchedmovie_path(id: movie['id']), method: :delete, class: "button is-info" %>
+  <% else %>
+  <p><%= form_tag(watchedmovies_path, :method => :post) do %>
+        <%= hidden_field_tag(:movie_id, movie['id'] ) %>
+        <%= submit_tag("Watched!", class: "button is-info")  %>
+      <% end %>
+
+   <% end %>  
+</p>
 <% end %>
 <br>
 <br>
